@@ -1,0 +1,129 @@
+include catppuccin-mocha
+
+# Font
+font pango:Jetbrains Mono Medium 8
+
+floating_modifier Mod4
+
+# Border
+default_border pixel 2
+default_floating_border pixel 2
+# hide_edge_borders none
+
+gaps inner 2
+gaps outer 3
+smart_borders on
+
+# Colors
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
+blur enable
+blur_passes 1
+
+shadows enable
+shadow_blur_radius 10
+
+focus_wrapping no
+
+# Keymappings
+bindsym Mod4+shift+r reload
+
+bindsym Mod4+1 workspace number 1
+bindsym Mod4+2 workspace number 2
+bindsym Mod4+3 workspace number 3
+bindsym Mod4+4 workspace number 4
+bindsym Mod4+5 workspace number 5
+bindsym Mod4+6 workspace number 6
+bindsym Mod4+7 workspace number 7
+bindsym Mod4+8 workspace number 8
+bindsym Mod4+9 workspace number 9
+bindsym Mod4+0 workspace number 10
+bindsym Mod4+grave scratchpad show
+
+bindsym Mod4+Shift+1 move container to workspace number 1; workspace 1
+bindsym Mod4+Shift+2 move container to workspace number 2; workspace 2
+bindsym Mod4+Shift+3 move container to workspace number 3; workspace 3
+bindsym Mod4+Shift+4 move container to workspace number 4; workspace 4
+bindsym Mod4+Shift+5 move container to workspace number 5; workspace 5
+bindsym Mod4+Shift+6 move container to workspace number 6; workspace 6
+bindsym Mod4+Shift+7 move container to workspace number 7; workspace 7
+bindsym Mod4+Shift+8 move container to workspace number 8; workspace 8
+bindsym Mod4+Shift+9 move container to workspace number 9; workspace 9
+bindsym Mod4+Shift+0 move container to workspace number 10; workspace 10
+bindsym Mod4+Shift+grave move scratchpad
+
+# Focus
+bindsym Mod4+h focus left
+bindsym Mod4+j focus down
+bindsym Mod4+k focus up
+bindsym Mod4+l focus right
+
+# Apps
+bindsym Mod4+t exec foot
+bindsym Mod4+shift+q exec rofi-logout
+
+# Layouts
+bindsym Mod4+v floating toggle
+bindsym Mod4+shift+v split vertical
+bindsym Mod4+shift+s split horizontal
+bindsym Mod4+w layout tabbed
+bindsym Mod4+s layout stacking
+bindsym Mod4+e layout toggle split
+
+bindsym Mod4+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym Mod4+Shift+h move left
+bindsym Mod4+Shift+j move down
+bindsym Mod4+Shift+k move up
+bindsym Mod4+Shift+l move right
+bindsym Mod4+q kill
+bindsym Mod4+a focus parent
+bindsym Mod4+r exec rofi -show drun | xargs swaymsg exec --
+bindsym Mod4+f fullscreen toggle
+
+# bindsym Mod4+r mode resize
+bindsym Mod4+space focus mode_toggle
+
+input "*" {
+  accel_profile flat
+  repeat_delay 400
+  repeat_rate 60
+  xkb_layout cmk,ara,us
+  xkb_options grp:win_space_toggle,altwin:menu_win
+}
+
+output "DP-1" {
+  bg /home/kareem/nixos/homes/kareem/desktops/wallpaper.png stretch
+  mode 1920x1080@165.003Hz
+}
+
+# bar {
+#   font pango:monospace 8.000000
+#   mode dock
+#   hidden_state hide
+#   position bottom
+#   status_command /nix/store/p6gbaxfxacj8rj9y51i1p70byfi1yv1k-i3status-2.15/bin/i3status
+#   swaybar_command /nix/store/nlw8i2k013h45dzwb846w07brvikffgj-swayfx-0.5/bin/swaybar
+#   workspace_buttons yes
+#   strip_workspace_numbers no
+#   tray_output primary
+#   colors {
+#     background #000000
+#     statusline #ffffff
+#     separator #666666
+#     focused_workspace #4c7899 #285577 #ffffff
+#     active_workspace #333333 #5f676a #ffffff
+#     inactive_workspace #333333 #222222 #888888
+#     urgent_workspace #2f343a #900000 #ffffff
+#     binding_mode #2f343a #900000 #ffffff
+#   }
+# }
+
+# Automatic executions
+exec "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE NIXOS_OZONE_WL XCURSOR_THEME XCURSOR_SIZE"
+exec "systemctl --user reset-failed && systemctl --user start sway-session.target && swaymsg -mt subscribe '[]' || true && systemctl --user stop sway-session.target"
+exec "clipse -listen"
