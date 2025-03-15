@@ -15,7 +15,7 @@ let
     map
     filter
     hasSuffix
-    hasPrefix
+    hasInfix
     ;
 
   inherit (lib.filesystem) listFilesRecursive;
@@ -39,7 +39,7 @@ let
               listFilesRecursive ../homes/${user}
               |> filter (n: baseNameOf n != "definition.nix")
               |> filter (n: hasSuffix ".nix" n)
-              |> filter (n: !(baseNameOf n |> hasPrefix "_"))
+              |> filter (n: !(hasInfix "_" n))
             )
             ++ [
               {
@@ -67,7 +67,7 @@ in
     verbose = true;
     useGlobalPkgs = true;
     useUserPackages = true;
-    backupFileExtension = "home.old";
+    backupFileExtension = "home.old.old";
 
     users = users;
 

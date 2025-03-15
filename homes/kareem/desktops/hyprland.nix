@@ -1,13 +1,10 @@
 {
   pkgs,
-  config,
   osConfig,
-  inputs,
   ...
 }:
 let
   cfg = osConfig.modules.desktop.hyprland;
-  kp = cfg.keyPrefix;
 in
 {
   home.packages = with pkgs; [
@@ -22,16 +19,16 @@ in
   wayland.windowManager.hyprland = {
     enable = cfg.enable;
     xwayland.enable = true;
-    systemd.enable = !cfg.uwsm;
+    systemd.enable = true;
     settings = {
       monitor = [ "DP-1,1920x1080@165,0x0,1" ];
       debug = {
         disable_logs = false;
       };
       exec-once = [
-        "$kp systemctl --user start hyprpolkitagent"
-        ("$kp swaybg -i" + ./wallpaper.png)
-        # "$kp ghostty --initial-window=false --quit-after-last-window-closed=false"
+        "systemctl --user start hyprpolkitagent"
+        ("swaybg -i" + ./wallpaper.png)
+        # "ghostty --initial-window=false --quit-after-last-window-closed=false"
       ];
       general = {
         gaps_in = 2;
@@ -111,6 +108,7 @@ in
         "workspace 1, class:(LibreWolf)"
         "workspace 1, class:(firefox)"
         "workspace 2, class:(ghostty)"
+        "workspace 2, class:(foot)"
         "workspace 2, class:(com.stremio.stremio)"
         "workspace 3, class:(mpv)"
         "fullscreen, class:(mpv)"
@@ -152,9 +150,7 @@ in
       "$terminal" = "foot";
       "$fileManager" = "dolphin";
       "$browser" = "chromium";
-      "$menu" =
-        "rofi -show drun | xargs " + (if kp == "uwsm app --" then "uwsm app" else "hyprctl dispatch exec");
-      "$kp" = kp;
+      "$menu" = "rofi -show drun | xargs hyprctl dispatch exec";
 
       bind = [
         ### Global Shortcuts ###
@@ -226,12 +222,12 @@ in
         ### Apps ###
         "$mod SHIFT, Q, exec, rofi-logout"
         "$mod SHIFT CTRL, Q, exit,"
-        "$mod, E, exec, XDG_CURRENT_DESKTOP=kde $kp $fileManager"
-        "$mod, W, exec, $kp $browser"
-        "$mod, R, exec, $kp $menu"
+        "$mod, E, exec, XDG_CURRENT_DESKTOP=kde $fileManager"
+        "$mod, W, exec, $browser"
+        "$mod, R, exec, $menu"
 
         # Audio #
-        "$mod ALT, P, exec, $kp pavucontrol"
+        "$mod ALT, P, exec, pavucontrol"
 
         # Screenshots #
         "$mod, Print, exec, grimblast copysave screen $(xdg-user-dir)/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S%Z).png"
@@ -241,9 +237,9 @@ in
         ''$mod SHIFT, U, exec, notify-send --icon clock-symbolic "$(date)"'' # Time
 
         # Terminal Apps #
-        "$mod, T, exec, $kp $terminal" # Terminal
-        "$mod SHIFT, E, exec, $kp $terminal -a term.app 'yazi' " # Yazi (File Manager)
-        "$mod SHIFT, V, exec, $kp $terminal -a term.applet 'clipse' " # Clipse (Clipboard Manager)
+        "$mod, T, exec, $terminal" # Terminal
+        "$mod SHIFT, E, exec, $terminal -a term.app 'yazi' " # Yazi (File Manager)
+        "$mod SHIFT, V, exec, $terminal -a term.applet 'clipse' " # Clipse (Clipboard Manager)
       ];
       bindm = [
         "$mod, mouse:272, movewindow"

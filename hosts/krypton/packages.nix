@@ -22,6 +22,7 @@
   };
 
   programs.command-not-found.enable = false;
+  programs.droidcam.enable = true;
 
   environment.systemPackages = with pkgs; [
     vivaldi

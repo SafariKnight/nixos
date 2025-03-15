@@ -18,7 +18,9 @@ in
     programs.sway = {
       enable = true;
       xwayland.enable = cfg.xwayland.enable;
+      wrapperFeatures.gtk = true;
       package = if cfg.fx then pkgs.swayfx else pkgs.sway;
     };
+    security.polkit.enable = true;
   };
 }

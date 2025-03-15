@@ -1,16 +1,18 @@
 {
   pkgs,
   lib,
+  config,
   osConfig,
   ...
 }:
 let
-  inherit (lib) mkOptionDefault;
   cfg = osConfig.modules.desktop.sway;
 in
 {
-  wayland.windowManager.sway = lib.mkIf cfg.enable rec {
-    enable = true;
+  # xdg.configFile.sway.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/homes/kareem/desktops/sway";
+  # xdg.configFile.sway.source = config.lib.file.mkOutOfStoreSymlink (builtins.toString ./sway);
+  wayland.windowManager.sway = lib.mkIf cfg.enable {
+    enable = false;
     systemd.enable = cfg.systemd.enable;
     package = if cfg.fx then pkgs.swayfx else pkgs.sway;
 
@@ -94,7 +96,7 @@ in
           background = base;
         };
 
-      # window.titlebar = false;
+      window.titlebar = false;
 
       gaps = {
         outer = 3;

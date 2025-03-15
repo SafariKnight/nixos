@@ -7,7 +7,6 @@
   modules.desktop.plasma.enable = true;
 
   modules.desktop.hyprland.enable = true;
-  modules.desktop.hyprland.uwsm = true;
 
   modules.desktop.sway.enable = true;
   modules.desktop.sway.systemd.enable = true;

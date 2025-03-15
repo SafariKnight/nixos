@@ -13,10 +13,6 @@
       inkscape
       tlrc
     ];
-    sessionVariables = {
-      HYPRCURSOR_SIZE = 24;
-      XCURSOR_SIZE = 24;
-    };
     pointerCursor = {
       name = "Bibata-Nord";
       package = pkgs.bibata-nord;
