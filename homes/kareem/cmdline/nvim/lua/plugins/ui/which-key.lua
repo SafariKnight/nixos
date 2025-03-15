@@ -28,6 +28,8 @@ return {
     wk.add({
       { "<leader>f", group = "Find" },
       { "<leader>d", group = "Debug" },
+      { "<leader>a", group = "AI" },
+      { "<leader>as", group = "SuperMaven" },
       { ",", group = nil },
       {
         "<leader>d<space>",

@@ -14,7 +14,7 @@ in
     rofi-logout
     grimblast
     hyprpicker
-    hyprpolkitagent
+    lxqt.lxqt-policykit
   ];
   wayland.windowManager.hyprland = {
     enable = cfg.enable;
@@ -26,7 +26,7 @@ in
         disable_logs = false;
       };
       exec-once = [
-        "systemctl --user start hyprpolkitagent"
+        "lxqt-policykit-agent"
         ("swaybg -i" + ./wallpaper.png)
         # "ghostty --initial-window=false --quit-after-last-window-closed=false"
       ];
@@ -132,6 +132,9 @@ in
 
         "float,class:(org.pulseaudio.pavucontrol)"
         "size 1280 720,class:(org.pulseaudio.pavucontrol)"
+
+        "float,initialTitle:.*Authentication.*"
+        "size 1280 720,initialTitle:.*Authentication.*"
 
         "noblur, class:^(Chromium)$"
         "noshadow, class:^(Chromium)$"

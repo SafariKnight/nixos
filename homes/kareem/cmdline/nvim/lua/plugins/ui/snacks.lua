@@ -1,4 +1,3 @@
-local dim = false
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -30,17 +29,6 @@ return {
           Snacks.debug.backtrace()
         end
         vim.print = _G.dd
-
-        vim.api.nvim_create_user_command(
-          "Messages",
-          Snacks.notifier.show_history,
-          {}
-        )
-        vim.api.nvim_create_user_command(
-          "Mess",
-          Snacks.notifier.show_history,
-          {}
-        )
       end,
     })
   end,
@@ -90,12 +78,12 @@ return {
     {
       "<leader>F",
       function()
-        if dim then
+        if _G.snacksDim then
           Snacks.dim.disable()
-          dim = false
+          _G.snacksDim = false
         else
           Snacks.dim()
-          dim = true
+          _G.snacksDim = true
         end
       end,
       desc = "Focus",

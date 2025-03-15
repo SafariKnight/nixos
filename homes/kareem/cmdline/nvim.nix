@@ -5,10 +5,8 @@
 }:
 {
   # stylix.targets.neovim.enable = false;
-  xdg.configFile.nvim = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/homes/kareem/cmdline/nvim/";
-    recursive = true;
-  };
+  xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/homes/kareem/cmdline/nvim/";
+  xdg.configFile.nvimo.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/homes/kareem/cmdline/nvimo/";
   programs.neovim = {
     defaultEditor = true;
     enable = true;
