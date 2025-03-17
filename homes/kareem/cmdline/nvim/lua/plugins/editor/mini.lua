@@ -6,7 +6,7 @@ return {
   opts = {
     ai = {},
     comment = {},
-    pairs = {},
+    -- pairs = {},
     icons = {},
     snippets = {},
     sessions = {

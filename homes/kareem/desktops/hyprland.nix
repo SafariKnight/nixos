@@ -28,7 +28,7 @@ in
       exec-once = [
         "lxqt-policykit-agent"
         ("swaybg -i" + ./wallpaper.png)
-        # "ghostty --initial-window=false --quit-after-last-window-closed=false"
+        "ghostty --initial-window=false --quit-after-last-window-closed=false"
       ];
       general = {
         gaps_in = 2;

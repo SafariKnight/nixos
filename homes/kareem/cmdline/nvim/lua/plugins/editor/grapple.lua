@@ -1,5 +1,6 @@
 return {
   "cbochs/grapple.nvim",
+  -- enabled = false,
   opts = {
     scope = "cwd",
     icons = true,

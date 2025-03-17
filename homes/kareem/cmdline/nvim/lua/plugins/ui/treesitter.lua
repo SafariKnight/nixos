@@ -1,6 +1,6 @@
 return {
-  "vim-treesitter/nvim-treesitter",
-  event = "VeryLazy", -- Suprised that this works well
+  "nvim-treesitter/nvim-treesitter",
+  event = "VeryLazy", -- Suprised that this works insanely well
   main = "nvim-treesitter.configs",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",

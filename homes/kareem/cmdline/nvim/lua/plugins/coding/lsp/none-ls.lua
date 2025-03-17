@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "nvimtools/none-ls.nvim",
   event = "BufReadPre",
@@ -6,6 +7,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvimtools/none-ls-extras.nvim",
   },
+  enabled = false,
   opts = function()
     local null_ls = require("null-ls")
     local builtin = null_ls.builtins
@@ -15,7 +17,6 @@ return {
         builtin.formatting.stylua,
         builtin.formatting.shfmt,
         builtin.formatting.prettier,
-        builtin.formatting.csharpier,
         builtin.formatting.nixfmt,
 
         builtin.formatting.gofumpt,
