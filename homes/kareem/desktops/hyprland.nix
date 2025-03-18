@@ -107,7 +107,7 @@ in
       windowrulev2 = [
         "workspace 1, class:(LibreWolf)"
         "workspace 1, class:(firefox)"
-        "workspace 2, class:(ghostty)"
+        "workspace 2, class:com.mitchellh.ghostty"
         "workspace 2, class:(foot)"
         "workspace 2, class:(com.stremio.stremio)"
         "workspace 3, class:(mpv)"
@@ -150,7 +150,7 @@ in
       ];
 
       "$mod" = "SUPER";
-      "$terminal" = "foot";
+      "$terminal" = "ghostty";
       "$fileManager" = "dolphin";
       "$browser" = "chromium";
       "$menu" = "rofi -show drun | xargs hyprctl dispatch exec";
@@ -241,8 +241,8 @@ in
 
         # Terminal Apps #
         "$mod, T, exec, $terminal" # Terminal
-        "$mod SHIFT, E, exec, $terminal -a term.app 'yazi' " # Yazi (File Manager)
-        "$mod SHIFT, V, exec, $terminal -a term.applet 'clipse' " # Clipse (Clipboard Manager)
+        "$mod SHIFT, E, exec, $terminal --class=term.app -e 'yazi' " # Yazi (File Manager)
+        "$mod SHIFT, V, exec, $terminal --class=term.applet -e 'clipse' " # Clipse (Clipboard Manager)
       ];
       bindm = [
         "$mod, mouse:272, movewindow"
