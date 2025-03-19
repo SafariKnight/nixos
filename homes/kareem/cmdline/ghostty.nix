@@ -17,7 +17,7 @@
       shell-integration-features = "no-cursor, sudo, no-title";
 
       # Font
-      font-family = "JetBrains Mono";
+      font-family = "Jetbrains Mono";
       font-style = "SemiBold";
       font-style-bold = "Bold";
       font-style-italic = "SemiBold Italic";
@@ -39,7 +39,7 @@
         "ctrl+l=unbind"
         "alt+five=unbind"
         "super+ctrl+right_bracket=unbind"
-        "ctrl+equal=unbind"
+        # "ctrl+equal=unbind"
         "ctrl+shift+o=unbind"
         # "ctrl+shift+c=unbind"
         "ctrl+shift+q=unbind"
@@ -56,7 +56,7 @@
         "ctrl+shift+w=unbind"
         "super+ctrl+shift+equal=unbind"
         "shift+end=unbind"
-        "ctrl+zero=unbind"
+        # "ctrl+zero=unbind"
         "alt+three=unbind"
         "ctrl+shift+j=unbind"
         "ctrl+enter=unbind"

@@ -24,6 +24,7 @@
     markdown-oxide
     gopls
     nixd
+    nil
     lua-language-server
     tailwindcss-language-server
     vscode-langservers-extracted

@@ -35,6 +35,7 @@ return {
         markdown_oxide = {},
         gopls = {},
         nixd = {},
+        nil_ls = {},
         tailwindcss = {},
         cssls = {},
         html = {},
