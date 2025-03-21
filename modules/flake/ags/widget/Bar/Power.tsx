@@ -8,7 +8,7 @@ export default function PowerButton() {
         App.get_window("PowerFlyout")!.show();
       }}
     >
-      <icon icon="nixos" />
+      <icon icon="os-nixos" />
     </button>
   );
 }

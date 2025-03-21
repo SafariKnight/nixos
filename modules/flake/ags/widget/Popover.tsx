@@ -57,9 +57,19 @@ export default function Popover({
       // close when hitting any key that's not a modifier
       onKeyPressEvent={(self, event: Gdk.Event) => {
         // Includes 65027 because apparently Gdk.KEY_ALT_R isn't altgr
-        const ignored = [Gdk.KEY_Control_L, Gdk.KEY_Control_R, Gdk.KEY_Alt_L, Gdk.KEY_Alt_R, 65027, Gdk.KEY_Super_L, Gdk.KEY_Super_R, Gdk.KEY_Shift_L, Gdk.KEY_Shift_R]
+        const ignored = [
+          Gdk.KEY_Control_L,
+          Gdk.KEY_Control_R,
+          Gdk.KEY_Alt_L,
+          Gdk.KEY_Alt_R,
+          65027,
+          Gdk.KEY_Super_L,
+          Gdk.KEY_Super_R,
+          Gdk.KEY_Shift_L,
+          Gdk.KEY_Shift_R,
+        ];
 
-        if (ignored.includes(event.get_keyval()[1])) return
+        if (ignored.includes(event.get_keyval()[1])) return;
 
         self.visible = false;
       }}
