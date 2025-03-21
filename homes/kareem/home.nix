@@ -12,6 +12,8 @@
       krita
       inkscape
       tlrc
+      zed-editor-fhs
+      bibata-nord
     ];
     pointerCursor = {
       name = "Bibata-Nord";

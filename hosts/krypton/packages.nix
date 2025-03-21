@@ -25,6 +25,7 @@
   programs.droidcam.enable = true;
 
   environment.systemPackages = with pkgs; [
+    postman
     vivaldi
     ungoogled-chromium
     gpu-screen-recorder

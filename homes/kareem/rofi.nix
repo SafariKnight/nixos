@@ -59,7 +59,7 @@
           # height = mkLiteral "35px";
           # text-color = mkLiteral "@nord6";
           # background-color = mkLiteral "@nord0";
-          anchor = mkLiteral "north";
+          anchor = mkLiteral "south";
           padding = mkLiteral "0 4px";
           children = mkLiteral "[ horibox ]";
         };

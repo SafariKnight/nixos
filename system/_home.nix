@@ -3,8 +3,6 @@
   self',
   ...
 }:
-let
-in
 {
   home-manager = {
     verbose = true;

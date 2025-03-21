@@ -21,6 +21,8 @@
     };
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
+
+    agsBar.url = "path:./modules/flake/ags";
   };
   outputs =
     inputs@{ flake-parts, ... }:
