@@ -45,6 +45,7 @@ export default function Power() {
     halign: Gtk.Align.START,
     valign: Gtk.Align.START,
     name: "PowerFlyout",
+    namespace: "power-flyout",
     visible: false,
     marginTop: 35,
     marginLeft: 5,

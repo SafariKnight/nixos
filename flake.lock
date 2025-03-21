@@ -29,7 +29,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-YGBlMFRVeFVqTuUMc9nSKnWZk7Ik2F2nxXkjmmpZ0QE=",
+        "narHash": "sha256-NnAEeKuXzSuT/8vXm3dHuDYdjeC1gnC0ehiBNsUYiBk=",
         "path": "./modules/flake/ags",
         "type": "path"
       },

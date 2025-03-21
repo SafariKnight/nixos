@@ -12,7 +12,7 @@ in
     clipse
     pavucontrol
     swaybg
-    rofi-logout
+    # rofi-logout
     grimblast
     hyprpicker
     lxqt.lxqt-policykit
@@ -149,6 +149,9 @@ in
         # Remove Wallpaper animations
         "noanim, swww-daemon"
         "noanim, wallpaper"
+
+        "noanim, bar"
+        "animation slide left, power-flyout"
       ];
 
       "$mod" = "SUPER";
@@ -225,7 +228,7 @@ in
         "$mod SHIFT, grave, movetoworkspace, special:magic" # Scratchpad
 
         ### Apps ###
-        "$mod SHIFT, Q, exec, rofi-logout"
+        # "$mod SHIFT, Q, exec, rofi-logout"
         "$mod SHIFT CTRL, Q, exit,"
         "$mod, E, exec, XDG_CURRENT_DESKTOP=kde $fileManager"
         "$mod, W, exec, $browser"
