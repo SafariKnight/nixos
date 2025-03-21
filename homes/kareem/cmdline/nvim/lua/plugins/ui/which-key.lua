@@ -1,6 +1,8 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
+  ---@type wk.Opts
+  ---@diagnostic disable:missing-fields
   opts = {
     preset = "helix",
     icons = {
@@ -8,46 +10,35 @@ return {
       separator = "", -- symbol used between a key and it's label
       group = "+", -- symbol prepended to a group
       ellipsis = "…",
-      mappings = false,
+      mappings = true,
     },
     replace = {
       key = {
-        -- function(key)
-        --   return require("which-key.view").format(key)
-        -- end,
         { "<Space>", "SPC" },
         { "<leader>", "SPC" },
         { ",", "COM" },
       },
     },
-  },
-  config = function(_, opts)
-    local wk = require("which-key")
-    wk.setup(opts)
-
-    wk.add({
+    spec = {
       { "<leader>f", group = "Find" },
-      { "<leader>d", group = "Debug" },
       { ",", group = nil },
       {
-        "<leader>d<space>",
-        function()
-          wk.show({
-            keys = "<leader>d",
-            loop = true,
-          })
+        "<leader>b",
+        group = "buffer",
+        expand = function()
+          return require("which-key.extras").expand.buf()
         end,
-        group = "Debug",
       },
       {
-        "<c-w><space>",
-        function()
-          wk.show({
-            keys = "<c-w>",
-            loop = true,
-          })
+        "<leader>w",
+        group = "windows",
+        proxy = "<c-w>",
+        expand = function()
+          return require("which-key.extras").expand.win()
         end,
       },
-    })
-  end,
+      { "gx", desc = "Open with system app" },
+    },
+  },
+  opts_extend = { "spec" },
 }

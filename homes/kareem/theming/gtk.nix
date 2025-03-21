@@ -18,5 +18,10 @@
     gtk3.extraConfig = {
       gtk-cursor-blink = false;
     };
+    cursorTheme = {
+      name = "Bibata-Nord";
+      package = pkgs.bibata-nord;
+      size = 24;
+    };
   };
 }

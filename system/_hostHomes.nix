@@ -21,7 +21,7 @@ let
   inherit (lib.filesystem) listFilesRecursive;
 
   userDirectories = readDir ../homes |> filterAttrs (_: v: v == "directory") |> attrNames;
-  hostDef = import ../hosts/${host}/definition.nix { };
+  hostDef = import ../hosts/${host}/definition.nix;
 
   users =
     userDirectories

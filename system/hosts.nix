@@ -1,117 +1,81 @@
 {
   inputs,
-  self,
+  lib,
   withSystem,
   config,
   ...
 }:
 let
-  inherit (inputs) nixpkgs;
-  inherit (nixpkgs) lib;
-  inherit (builtins) readDir baseNameOf;
-  inherit (lib)
-    filter
-    flatten
-    map
-    attrNames
-    isString
-    isPath
-    isAttrs
-    filterAttrs
-    listToAttrs
-    hasInfix
-    hasPrefix
-    hasSuffix
-    pathIsRegularFile
-    nixosSystem
-    elem
-    ;
-  inherit (lib.filesystem) listFilesRecursive;
+  # Get a list of directories in ../hosts
+  hostDirs =
+    builtins.readDir ../hosts
+    |> lib.filterAttrs (name: type: type == "directory")
+    |> builtins.attrNames;
 
-  hostDirectories = readDir ../hosts |> filterAttrs (_: v: v == "directory") |> attrNames;
+  # Function to import all nix files from a directory
+  importDir =
+    dir:
+    lib.filesystem.listFilesRecursive dir
+    |> builtins.filter (file: lib.hasSuffix ".nix" file)
+    |> builtins.filter (file: !(lib.hasInfix "_" file));
 
-  hostConfigurations =
-    hostDirectories
-    |> map (
-      directory:
-      let
-        defs = import ../hosts/${directory}/definition.nix { };
-        modulesFromStrings =
-          defs.modules
-          |> filter isString
-          |> map (f: ../modules/nixos/${f})
-          |> map listFilesRecursive
-          |> flatten
-          |> filter (f: hasSuffix ".nix" f)
-          |> filter (n: !(baseNameOf n |> hasPrefix "_"))
-          |> map (f: import f);
+  # Function to import a module path
+  importModule = modulePath: importDir (../modules/nixos + "/${modulePath}");
 
-        modulesFromPaths = defs.modules |> filter isPath |> filter pathIsRegularFile |> map (f: import f);
+  # Function to create a NixOS configuration for a machine
+  makeNixosConfig =
+    machineName:
+    let
+      definition = import ../hosts/${machineName}/definition.nix;
 
-        modulesFromAttrs = defs.modules |> filter isAttrs;
-      in
-      {
-        name = directory;
-        value = nixosSystem {
-          specialArgs = { inherit inputs self; };
-          modules =
-            flatten [
+      # Define the modules to be imported
+      hostModules =
+        [
+          {
+            networking.hostName = definition.hostname;
+            system.stateVersion = definition.stateVersion;
+
+            # Configure users
+            users.users = lib.genAttrs definition.users (username: {
+              isNormalUser = true;
+              extraGroups = lib.optional (builtins.elem username definition.sudoers) "wheel";
+            });
+
+            nixpkgs =
               {
-                users.users =
-                  defs.users
-                  |> map (name: {
-                    name = name;
-                    value = {
-                      isNormalUser = true;
-                      extraGroups = (if elem name defs.sudoers then [ "wheel" ] else [ ]);
-                      # shell = withSystem defs.system ({ pkgs, ... }: pkgs.bash);
-                    };
-                  })
-                  |> listToAttrs;
-                networking.hostName = defs.hostname;
-                system.stateVersion = defs.stateVersion;
-                nixpkgs =
-                  {
-                    hostPlatform = defs.system;
-                    flake = {
-                      source = nixpkgs.outPath;
-                    };
-                  }
-                  // (import ./_nixpkgs.nix {
-                    inherit inputs;
-                    system = defs.system;
-                  });
-
+                hostPlatform = definition.system;
+                flake = {
+                  source = inputs.nixpkgs.outPath;
+                };
               }
-              modulesFromStrings
-              modulesFromPaths
-              modulesFromAttrs
-              (
-                listFilesRecursive ../hosts/${directory}
-                |> filter (n: (baseNameOf n) != "definition.nix")
-                |> filter (n: hasSuffix ".nix" n)
-                |> filter (n: !(hasInfix "_" n))
-              )
-            ]
-            ++ (
-              if defs.homeManager then
-                [
-                  inputs.home-manager.nixosModules.home-manager
-                  (import ./_hostHomes.nix {
-                    inherit inputs withSystem config;
-                    host = directory;
-                  })
-                ]
-              else
-                [ ]
-            );
-        };
-      }
-    )
-    |> flatten
-    |> listToAttrs;
+              // (import ./_nixpkgs.nix {
+                inherit inputs;
+                system = definition.system;
+              });
+          }
+        ]
+        ++ (definition.modules |> builtins.concatMap importModule)
+        ++ (
+          lib.filesystem.listFilesRecursive ../hosts/${definition.hostname}
+          |> lib.filter (n: (builtins.baseNameOf n) != "definition.nix")
+          |> lib.filter (n: lib.hasSuffix ".nix" n)
+          |> lib.filter (n: !(lib.hasInfix "_" n))
+        )
+        ++ (lib.optional definition.homeManager inputs.home-manager.nixosModules.home-manager)
+        ++ (lib.optional definition.homeManager (
+          import ./_hostHomes.nix {
+            inherit inputs withSystem config;
+            host = definition.hostname;
+          }
+        ));
 
+    in
+    inputs.nixpkgs.lib.nixosSystem {
+      system = definition.system;
+      modules = hostModules;
+      specialArgs = { inherit inputs lib; };
+    };
 in
 {
-  flake.nixosConfigurations = hostConfigurations;
+  flake.nixosConfigurations = lib.genAttrs hostDirs makeNixosConfig;
 }
