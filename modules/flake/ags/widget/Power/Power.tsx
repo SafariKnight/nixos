@@ -6,29 +6,39 @@ const buttons = {
   shutdown: {
     tooltip: "Power Off",
     icon: "shutdown",
-    function: () => { exec("systemctl poweroff") }
+    function: () => {
+      exec("systemctl poweroff");
+    },
   },
   restart: {
     tooltip: "Restart",
     icon: "reboot",
-    function: () => { exec("systemctl reboot") }
+    function: () => {
+      exec("systemctl reboot");
+    },
   },
   sleep: {
     tooltip: "Sleep",
     icon: "suspend",
-    function: () => { exec("systemctl suspend") }
+    function: () => {
+      exec("systemctl suspend");
+    },
   },
   hibernate: {
     tooltip: "Hibernate",
     icon: "suspend-hibernate",
-    function: () => { exec("systemctl hibernate") }
+    function: () => {
+      exec("systemctl hibernate");
+    },
   },
   logout: {
     tooltip: "Log Out",
     icon: "log-out",
-    function: () => { exec("hyprctl dispatch exit") }
-  }
-}
+    function: () => {
+      exec("hyprctl dispatch exit");
+    },
+  },
+};
 
 export default function Power() {
   return Popover({
@@ -40,19 +50,16 @@ export default function Power() {
     marginLeft: 5,
     child: (
       <box className="PowerFlyout" spacing={3} vertical>
-        {
-          Object.entries(buttons).map(([, { tooltip, icon, function: func }]) => {
-            return <eventbox
-              tooltipText={tooltip}
-              expand
-              onClick={func}
-            >
-              <icon icon={icon} />
-            </eventbox>
-          })
-
-        }
-      </box >
+        {Object.entries(buttons).map(
+          ([, { tooltip, icon, function: func }]) => {
+            return (
+              <eventbox tooltipText={tooltip} expand onClick={func}>
+                <icon icon={icon} />
+              </eventbox>
+            );
+          },
+        )}
+      </box>
     ),
   });
 }

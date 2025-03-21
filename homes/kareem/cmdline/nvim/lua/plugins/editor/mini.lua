@@ -15,11 +15,11 @@ return {
       directory = "~/.vim/sessions",
       file = "",
     },
-    surround = {
-      mappings = {
-        add = "gza",
-      },
-    },
+    -- surround = {
+    --   mappings = {
+    --     add = "gza",
+    --   },
+    -- },
   },
   config = function(_, opts)
     for module, options in pairs(opts) do
