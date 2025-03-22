@@ -1,5 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  home.packages = [
+    pkgs.jj-push
+  ];
   programs.jujutsu = {
     enable = true;
     settings = {
