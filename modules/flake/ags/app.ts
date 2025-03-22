@@ -4,6 +4,10 @@ import Bar from "./widget/Bar/Bar";
 import Power from "./widget/Power/Power";
 // import GlobalWindow from "./widget/Global";
 
+
+
+
+
 App.start({
   icons: "./icons",
   css: style,
