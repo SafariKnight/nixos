@@ -1,0 +1,12 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+[user]
+name = "Kareem Hisham"
+email = "safariknight2@gmail.com"
+
+[ui]
+diff-editor = ":builtin"
+pager = ":builtin"
+
+[git]
+write-change-id-header = true

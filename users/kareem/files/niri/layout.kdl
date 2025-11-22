@@ -1,0 +1,34 @@
+//// Layout ////
+layout {
+    gaps 4
+    always-center-single-column
+    preset-column-widths {// Mod+r
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    default-column-width {
+        proportion 0.5
+    }
+    preset-window-heights {// Mod+R
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+    shadow {
+        on
+        softness 30
+        spread 5
+        color "#0007"
+    }
+    border {
+        width 4
+        active-color "#74c7ec"
+        inactive-color "#585b70"
+        urgent-color "#f38ba8"
+    }
+    focus-ring {
+        off
+    }
+}
