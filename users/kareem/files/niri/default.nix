@@ -11,7 +11,7 @@
 
       feh
 
-      ungoogled-chromium
+      helium
 
       gpu-screen-recorder
       gpu-screen-recorder-gtk

@@ -50,8 +50,6 @@
       # stremio-mpv
       mpvWithScripts
 
-      helium
-
       tealdeer
 
       nodejs
