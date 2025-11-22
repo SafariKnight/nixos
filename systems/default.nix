@@ -20,7 +20,8 @@
           ./common.nix
           (lib.pipe (lib.filesystem.listFilesRecursive ./${name}) [
             (lib.filter (n: lib.hasSuffix ".nix" n))
-            (lib.filter (n: !lib.hasInfix "_" n))
+            (map builtins.toString)
+            (lib.filter (n: !(lib.hasInfix "_" n)))
           ])
         ];
       });

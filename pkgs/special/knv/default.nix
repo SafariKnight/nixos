@@ -64,6 +64,10 @@
 
       sqlite
       postgresql
+
+      ripgrep
+      fd
+      fzf
     ];
 
     plugins = {

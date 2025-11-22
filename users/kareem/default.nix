@@ -34,14 +34,13 @@
       ];
     };
   in {
-    # rum.programs.direnv.enable = true;
     packages = with pkgs; [
       qbittorrent
-      # opencode
-      mprocs
       p7zip-rar
       input-remapper
       typst
+      gemini-cli
+      usbutils
 
       (discord.override {
         withOpenASAR = true;
@@ -56,10 +55,6 @@
       nodejs.pkgs.pnpm
       bun
 
-      yaak
-
-      gemini-cli
-
       pinta
 
       # VCS
@@ -67,8 +62,6 @@
       lazygit
       jujutsu
       jj-push
-
-      usbutils
 
       # TMux
       tmux
