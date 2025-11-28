@@ -71,14 +71,14 @@
       yazi
 
       # Helix
-      # inputs.helix-steel.packages.${pkgs.system}.default
-      # helix-wrapped
-      # steel
-      # nixd
-      # typescript
-      # typescript-language-server
-      # vscode-langservers-extracted
-      # emmet-language-server
+      helix
+      nixd
+      typescript
+      typescript-language-server
+      vscode-langservers-extracted
+      emmet-language-server
+      basedpyright
+      kdePackages.qtdeclarative
 
       # Ghostty
       ghostty
