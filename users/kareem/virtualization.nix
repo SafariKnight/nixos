@@ -23,7 +23,6 @@
     "virbr0"
   ];
   virtualisation = {
-    incus.enable = true;
     podman.enable = true;
     libvirtd = {
       enable = true;

@@ -26,14 +26,7 @@
     enable = true;
   };
 
-  hjem.users.kareem = let
-    mpvWithScripts = pkgs.mpv.override {
-      scripts = with pkgs.mpvScripts; [
-        uosc
-        thumbfast
-      ];
-    };
-  in {
+  hjem.users.kareem = {
     packages = with pkgs; [
       qbittorrent
       p7zip-rar
@@ -41,44 +34,35 @@
       typst
       gemini-cli
       usbutils
-
+      flatpak-xdg-utils
+      yazi
       (discord.override {
         withOpenASAR = true;
         withVencord = true;
       })
-      # stremio-mpv
-      mpvWithScripts
-
+      (pkgs.mpv.override {
+        scripts = with pkgs.mpvScripts; [
+          uosc
+          thumbfast
+        ];
+      })
       tealdeer
+      pinta
 
       nodejs
       nodejs.pkgs.pnpm
       bun
 
-      pinta
-
       # VCS
       git
       lazygit
       jujutsu
+      jjui
       jj-push
 
       # TMux
       tmux
       tmux-session
-
-      # Yazi
-      yazi
-
-      # Helix
-      helix
-      nixd
-      typescript
-      typescript-language-server
-      vscode-langservers-extracted
-      emmet-language-server
-      basedpyright
-      kdePackages.qtdeclarative
 
       # Ghostty
       ghostty
@@ -93,13 +77,10 @@
       oh-my-posh
       atuin
       eza
-      lsr
       ripgrep
       bat
       fd
       television
-
-      emacs-pgtk
 
       # Neovim
       self.packages.${pkgs.stdenv.hostPlatform.system}.knv
