@@ -5,7 +5,7 @@
 }:
 rustPlatform.buildRustPackage {
   pname = "blink.cmp";
-  version = "1.6.0-unstable-2025-09-05";
+  version = "1.8.0-unstable-2025-12-18";
 
   src = fetchFromGitHub {
     owner = "Saghen";

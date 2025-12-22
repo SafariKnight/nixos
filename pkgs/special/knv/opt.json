@@ -59,10 +59,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v1.9.0",
-      "revision": "f59bd14a852ca43db38e3662395354cb2a9b13e0",
-      "url": "https://api.github.com/repos/folke/lazydev.nvim/tarball/v1.9.0",
-      "hash": "102sxfdq6ajvfs95r4084xvbcjv2qiv5cmyrqbwijmc05isg9d8j"
+      "version": "v1.10.0",
+      "revision": "01bc2aacd51cf9021eb19d048e70ce3dd09f7f93",
+      "url": "https://api.github.com/repos/folke/lazydev.nvim/tarball/v1.10.0",
+      "hash": "1jp5nqpyyf9wzvjd2534i01sfrv6mnbjl1pflzh9ll976655vaxj"
     },
     "mini.nvim": {
       "type": "GitRelease",
@@ -75,10 +75,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v0.16.0",
-      "revision": "9696a426981031a8eba6764ef943bd57eba13bfa",
-      "url": "https://api.github.com/repos/echasnovski/mini.nvim/tarball/v0.16.0",
-      "hash": "1j79m6wn8wijad6an2rghd6a3pwd3v7yl4v529khg4644ybvwa9p"
+      "version": "v0.17.0",
+      "revision": "b2be4d82551bf86867f3a8af2bdd483a82f2d384",
+      "url": "https://api.github.com/repos/echasnovski/mini.nvim/tarball/v0.17.0",
+      "hash": "05ghbs0h03pgh7jzxc5ib93p4wf2x3c1mli121fa7dg902nmjqy6"
     },
     "nvim-lspconfig": {
       "type": "GitRelease",
@@ -91,10 +91,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v2.4.0",
-      "revision": "3db16ceeea947517f0dc1404c24dcb5ab0c91d26",
-      "url": "https://api.github.com/repos/neovim/nvim-lspconfig/tarball/v2.4.0",
-      "hash": "0gam1rxqkxksayblhj1i7jkh4sqjp6lpvyb1psmrhkryj6967ir2"
+      "version": "v2.5.0",
+      "revision": "5bfcc89fd155b4ffc02d18ab3b7d19c2d4e246a7",
+      "url": "https://api.github.com/repos/neovim/nvim-lspconfig/tarball/v2.5.0",
+      "hash": "10akq2j943m0cgr453arayqv1hx2brpqakrkqhkc0ambd2bkidh6"
     },
     "oil.nvim": {
       "type": "GitRelease",
@@ -123,10 +123,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v2.22.0",
-      "revision": "5eac729fa290248acfe10916d92a5ed5e5c0f9ed",
-      "url": "https://api.github.com/repos/folke/snacks.nvim/tarball/v2.22.0",
-      "hash": "1hbm4fnw51qdp0nz83fcxbvnxjq2k57a37w6dp0wz6wkcx7cwxw9"
+      "version": "v2.30.0",
+      "revision": "a4e46becca45eb65c73a388634b1ce8aad629ae0",
+      "url": "https://api.github.com/repos/folke/snacks.nvim/tarball/v2.30.0",
+      "hash": "0ri4ymm9w3ylawc7dbd7p872697snkwkks5rpwyk239sywdbjvp6"
     },
     "typst-preview.nvim": {
       "type": "GitRelease",
@@ -139,10 +139,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v1.3.4",
-      "revision": "e544812bba84b4f7976590f2b6c0dfbd099e1893",
-      "url": "https://api.github.com/repos/chomosuke/typst-preview.nvim/tarball/v1.3.4",
-      "hash": "13340nd2rvvh3s9nyrg0kp72pxy6dpsh6nbh3zpqd7simlz1ys44"
+      "version": "v1.4.0",
+      "revision": "87d0f3a1beedefe6fdd96422c04c3dceb69d1063",
+      "url": "https://api.github.com/repos/chomosuke/typst-preview.nvim/tarball/v1.4.0",
+      "hash": "18873xm3lhbgqy6s6nm23ciralylbm47dk4w654vpsnsj1h142lq"
     },
     "vim-dadbod": {
       "type": "GitRelease",
@@ -182,9 +182,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "e8b53c0f3aa6e6127ac2a2d2071d9aade6c6e373",
-      "url": "https://github.com/kristijanhusak/vim-dadbod-ui/archive/e8b53c0f3aa6e6127ac2a2d2071d9aade6c6e373.tar.gz",
-      "hash": "014hzw3fh7v9zp3i6s1rv11i0gg8wv1qz4acs9nmwlmyir400jz9"
+      "revision": "48c4f271da13d380592f4907e2d1d5558044e4e5",
+      "url": "https://github.com/kristijanhusak/vim-dadbod-ui/archive/48c4f271da13d380592f4907e2d1d5558044e4e5.tar.gz",
+      "hash": "0jir3fwbgpab92j7aj9yhdnxcah1dy7kg4lmpqbid1zzw7h4qbyi"
     },
     "which-key.nvim": {
       "type": "GitRelease",
