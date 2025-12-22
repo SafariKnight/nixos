@@ -30,9 +30,7 @@
     packages = with pkgs; [
       qbittorrent
       p7zip-rar
-      input-remapper
       typst
-      gemini-cli
       usbutils
       flatpak-xdg-utils
       yazi

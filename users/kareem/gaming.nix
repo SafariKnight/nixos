@@ -8,23 +8,26 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # Dependencies
     dwarfs
     fuse3
     fuse-overlayfs
     bubblewrap
+    temurin-jre-bin-21
+
+    # Utility
     gamescope
     gamemode
     vkbasalt
     vkbasalt-cli
     mangohud
-    protonup-qt
+    protonplus
+    wineWowPackages.stable
+    input-remapper
+
+    # PC Gaming
     lutris
     heroic
-    osu-lazer-bin
-    protonplus
-    temurin-jre-bin-21
-    ryubing
-    wineWowPackages.stable
     (prismlauncher.override {
       jdks = [
         temurin-jre-bin-21
@@ -32,5 +35,8 @@
         temurin-jre-bin-8
       ];
     })
+
+    # Emulation
+    ryubing
   ];
 }
