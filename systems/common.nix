@@ -140,7 +140,7 @@
   nix.settings.substituters = map (url: "${url}/nix-channels/store") [
     "https://mirrors.ustc.edu.cn"
     # "https://mirrors6.tuna.tsinghua.edu.cn"
-    "https://mirrors.tuna.tsinghua.edu.cn"
+    # "https://mirrors.tuna.tsinghua.edu.cn"
     # "https://mirror.sjtu.edu.cn" # FIXME: buggy?
   ];
 }
