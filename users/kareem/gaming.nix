@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs.steam = {
     enable = true;
+    gamescopeSession.enable = true;
   };
 
   programs.gamescope = {
@@ -24,6 +25,7 @@
     protonplus
     wineWowPackages.stable
     input-remapper
+    sgdboop
 
     # PC Gaming
     lutris
