@@ -1,1 +1,0 @@
-tv init fish | source

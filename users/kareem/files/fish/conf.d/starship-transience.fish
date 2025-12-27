@@ -1,4 +1,4 @@
-# work around since starship can insert a newline before the prompt
+# workaround to fix some quirks with starship transience on fish
 function starship_transient_prompt_func
     tput cuu1
     starship module character
@@ -9,7 +9,3 @@ function prompt_newline --on-event fish_postexec
 end
 
 alias clear "command clear; commandline -f clear-screen"
-
-starship init fish | source
-
-enable_transience

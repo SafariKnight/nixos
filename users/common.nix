@@ -15,6 +15,7 @@
     linker = inputs.hjem.packages.${pkgs.stdenv.hostPlatform.system}.smfh;
     extraModules = [
       inputs.hjem-rum.hjemModules.default
+      (import ./../modules/hjem-ext)
     ];
   };
 }
