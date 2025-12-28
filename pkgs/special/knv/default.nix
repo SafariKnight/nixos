@@ -78,7 +78,7 @@
             ./lua
           ];
         };
-        impure = "/home/kareem/nixos/pkgs/special/knv";
+        impure = "/home/kareem/repositories/github.com/SafariKnight/nixos/pkgs/special/knv";
       };
 
       start = inputs.mnw.lib.npinsToPlugins pkgs ./start.json;
