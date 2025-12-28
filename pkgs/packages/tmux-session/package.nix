@@ -18,7 +18,7 @@ writeShellApplication {
     # bash
     ''
       #/usr/bin/env bash
-      declare -a SEARCH_PATHS=(~/projects)
+      declare -a SEARCH_PATHS=(~/projects ~/repositories/*/*)
       declare -a PATHS=(~/nixos)
 
       find_dirs() {

@@ -2,6 +2,7 @@
   hjem.users.kareem = {
     packages = with pkgs; [
       git
+      git-get
       lazygit
     ];
     rum.programs.git = {
