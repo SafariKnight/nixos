@@ -27,17 +27,10 @@
       typst
       usbutils
       flatpak-xdg-utils
-      yazi
       amp-cli
       (discord.override {
         withOpenASAR = true;
         withVencord = true;
-      })
-      (pkgs.mpv.override {
-        scripts = with pkgs.mpvScripts; [
-          uosc
-          thumbfast
-        ];
       })
       tealdeer
       pinta

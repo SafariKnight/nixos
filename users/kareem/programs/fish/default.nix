@@ -11,6 +11,7 @@
       ripgrep
       bat
       fd
+      yazi
     ];
     rum.programs.fish = {
       enable = true;

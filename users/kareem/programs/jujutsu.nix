@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   hjem.users.kareem = {
     packages = with pkgs; [
-      jujutsu
       jjui
       jj-push
     ];
