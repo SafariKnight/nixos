@@ -23,11 +23,11 @@
     "virbr0"
   ];
   virtualisation = {
-    incus = {
-      enable = true;
-      ui.enable = true;
-      agent.enable = true;
-    };
+    # incus = {
+    #   enable = true;
+    #   ui.enable = true;
+    #   agent.enable = true;
+    # };
     podman.enable = true;
     libvirtd = {
       enable = true;

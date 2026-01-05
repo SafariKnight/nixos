@@ -19,7 +19,7 @@ writeShellApplication {
     ''
       #/usr/bin/env bash
       declare -a SEARCH_PATHS=(~/projects ~/repositories/*/*)
-      declare -a PATHS=(~/nixos)
+      declare -a PATHS=()
 
       find_dirs() {
         if [[ -n "$TMUX" ]]; then

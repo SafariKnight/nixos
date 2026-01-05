@@ -4,7 +4,6 @@
   inputs,
   modulesPath,
   config,
-  pkgs,
   ...
 }: {
   imports = [
@@ -54,27 +53,32 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    plymouth = {
-      enable = true;
-      theme = "hexagon";
-      themePackages = with pkgs; [
-        # By default we would install all themes
-        (adi1090x-plymouth-themes.override {
-          selected_themes = ["hexagon"];
-        })
-      ];
-    };
 
-    consoleLogLevel = 0;
+    plymouth.enable = true;
+
     initrd = {
       verbose = false;
       systemd.enable = true;
+
+      kernelModules = [
+        "amdgpu"
+      ];
     };
     kernelParams = [
+      "splash"
       "quiet"
-      "plymouth.use-simpledrm"
-      "i915.fastboot=1"
+      "plymouth.use-simpledrm=0"
+      "loglevel=3"
+      "nowatchdog"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "system.show_status=auto"
+      "rd.udev.log_level=3"
+      "vt.global_cursor_default=0"
     ];
+    kernel.sysctl = {
+      "kernel.prink" = "3 3 3 3";
+    };
 
     tmp.useTmpfs = true;
   };
