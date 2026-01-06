@@ -26,6 +26,10 @@ update flake="$(uname -n)": _sudo
   fyi --icon=emblem-ok-symbolic --transient "NixOS Update" "OK!" ||
   fyi --icon=window-close-symbolic --transient "NixOS Update" "FAILED!"
 
+repl flake="$(uname -n)":
+  #!/usr/bin/env bash
+  just _repl {{ flake }}
+
 @_sudo:
   sudo -l > /dev/null
 
@@ -42,3 +46,6 @@ _update flake: _format
   nix flake update
   sudo nixos-rebuild switch --flake .#{{flake}}
   nh os switch $(pwd) -H {{flake}} -u
+
+_repl flake:
+  nixos-rebuild repl --flake .#{{flake}}
