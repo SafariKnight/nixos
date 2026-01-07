@@ -24,6 +24,7 @@
     packages = with pkgs; [
       qbittorrent
       p7zip-rar
+      ouch
       typst
       usbutils
       flatpak-xdg-utils

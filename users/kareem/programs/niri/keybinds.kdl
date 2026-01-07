@@ -174,7 +174,7 @@ binds {
     Mod+W hotkey-overlay-title="Browser" {
         spawn "helium"
     }
-    Mod+D hotkey-overlay-title="Open an application" {
+    Mod+D repeat=false hotkey-overlay-title="Open an application" {
         // spawn "rofi" "-show" "drun"
         spawn "vicinae" "toggle"
     }
