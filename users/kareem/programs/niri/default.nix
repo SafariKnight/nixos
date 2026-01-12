@@ -4,10 +4,18 @@
   pkgs,
   ...
 }: {
+  environment.etc."xdg/menus/plasma-applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+
+  services.gvfs.enable = true;
+
   hjem.users.kareem = {
     packages = with pkgs; [
-      nautilus
+      kdePackages.dolphin
       kdePackages.ark
+      kdePackages.kio-extras
+      kdePackages.kio-fuse
+      kdePackages.qtsvg
+      kdePackages.kservice
 
       feh
 
@@ -33,12 +41,12 @@
       );
       extraVariables = {
         QT_QPA_PLATFORM = "wayland";
+        XDG_MENU_PREFIX = "plasma-";
       };
       enable = true;
     };
   };
 
-  services.gvfs.enable = true;
   programs.niri.enable = true;
   programs.obs-studio = {
     enable = true;

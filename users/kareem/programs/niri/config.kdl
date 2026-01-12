@@ -25,11 +25,6 @@ output "DP-1" {
 spawn-at-startup "sh" "-c" "DISPLAY=:1 setxkbmap us"
 spawn-at-startup "mako"
 spawn-at-startup "vicinae" "server"
-//// Environment ////
-// environment {
-//     QT_QPA_PLATFORM "wayland"
-//     DISPLAY ":0"
-// }
 /// Misc
 prefer-no-csd
 // No client side decorationsscreenshot-path "~/Pictures/Screenshots/Screenshot %Y-%m-%d %H:%M:%S.png"
