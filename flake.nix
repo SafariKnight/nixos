@@ -45,7 +45,17 @@
                 call_parentheses = "NoSingleTable";
               };
             };
+            prettier = {
+              enable = true;
+              settings = {
+                printWidth = 80;
+                useTabs = false;
+              };
+            };
+            taplo.enable = true;
+            yamlfmt.enable = true;
           };
+          settings.global.excludes = [".direnv" ".git" ".jj"];
         };
       };
     };
