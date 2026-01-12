@@ -18,7 +18,7 @@ Use conventional commits with optional scopes:
 This is a personal NixOS flake-based configuration with modular structure:
 
 - **systems/**: NixOS system configurations (currently `krypton` and `krypton-impure`)
-- **modules/**: Custom modules (hjem-ext/ for home manager extensions)
+- **modules/**: Custom modules (hjem-ext/ for hjem modules)
 - **users/**: Per-user configurations (kareem/ user setup and common defaults)
 - **pkgs/**: Custom packages and special package definitions
 - **flake.nix**: Flake input definitions and treefmt configuration
