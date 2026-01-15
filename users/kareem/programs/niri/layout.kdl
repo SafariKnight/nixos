@@ -2,7 +2,8 @@
 layout {
     gaps 4
     always-center-single-column
-    preset-column-widths {// Mod+r
+    preset-column-widths {
+        // Mod+r
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
@@ -10,7 +11,8 @@ layout {
     default-column-width {
         proportion 0.5
     }
-    preset-window-heights {// Mod+R
+    preset-window-heights {
+        // Mod+R
         proportion 0.33333
         proportion 0.5
         proportion 0.66667

@@ -1,4 +1,4 @@
-vim.filetype.add {
+vim.filetype.add({
   extension = {
     html = function(path)
       if string.match(path, "[/\\]src[/\\]index.html$") then
@@ -18,14 +18,14 @@ vim.filetype.add {
       return "html"
     end,
   },
-}
+})
 return {
   "nvim-treesitter",
   event = "DeferredUIEnter",
-  -- lazy = false,
+  lazy = false,
   after = function()
     ---@diagnostic disable-next-line: missing-fields
-    require("nvim-treesitter.configs").setup {
+    require("nvim-treesitter").setup({
       ensure_install = {},
       ignore_install = {},
       auto_install = false,
@@ -47,6 +47,6 @@ return {
           },
         },
       },
-    }
+    })
   end,
 }

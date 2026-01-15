@@ -7,6 +7,7 @@
 ## Commit Style
 
 Use conventional commits with optional scopes:
+
 - `feat: description` - New feature
 - `fix: description` - Bug fix
 - `chore: description` - Maintenance/build changes
