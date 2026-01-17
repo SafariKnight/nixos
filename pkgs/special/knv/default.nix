@@ -6,6 +6,8 @@
   inherit (pkgs) lib;
   fs = lib.fileset;
 
+  npinsToPlugins = input: builtins.mapAttrs (_: v: v {inherit pkgs;}) (import ./npins.nix {inherit input;});
+
   knv = inputs.mnw.lib.wrap pkgs {
     neovim = pkgs.neovim-unwrapped;
 
@@ -81,14 +83,17 @@
         impure = "/home/kareem/repositories/github.com/SafariKnight/nixos/pkgs/special/knv";
       };
 
-      start = inputs.mnw.lib.npinsToPlugins pkgs ./start.json;
+      startAttrs = npinsToPlugins ./start.json;
 
-      opt =
-        [
-          pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-          (pkgs.callPackage ./_packages/blink-cmp.nix {})
-        ]
-        ++ inputs.mnw.lib.npinsToPlugins pkgs ./opt.json;
+      start = [
+        pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+      ];
+
+      optAttrs =
+        {
+          "blink.cmp" = pkgs.callPackage ./_packages/blink-cmp.nix {};
+        }
+        // npinsToPlugins ./opt.json;
     };
   };
 in

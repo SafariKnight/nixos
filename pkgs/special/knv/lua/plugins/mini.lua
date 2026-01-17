@@ -1,7 +1,6 @@
 local opts = {
   ai = {},
   comment = {},
-  pairs = {},
   icons = {},
   sessions = {
     autoread = false, -- Enter via snacks dashboard
