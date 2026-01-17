@@ -11,7 +11,7 @@
   nix.gc.automatic = lib.mkForce false;
   programs = {
     nh = {
-      flake = "${config.users.users.kareem.home}/nixos";
+      flake = "${config.users.users.kareem.home}/repositories/github.com/SafariKnight/nixos";
       enable = true;
       clean = {
         enable = true;
