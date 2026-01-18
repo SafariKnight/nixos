@@ -27,7 +27,6 @@
 
       # Padding
       window-padding-balance = true;
-      window-padding-color = "extend";
 
       # Theme / Palette
       background = "#161616";
