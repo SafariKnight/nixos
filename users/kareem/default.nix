@@ -15,6 +15,7 @@
       "libvirtd"
       "incus-admin"
       "fuse"
+      "i2c"
     ];
     shell = pkgs.dash;
     enable = true;

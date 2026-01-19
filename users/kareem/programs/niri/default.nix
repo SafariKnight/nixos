@@ -34,7 +34,7 @@
       xwayland-satellite
     ];
     rum.desktops.niri = {
-      config = lib.concatMapStringsSep "\n" builtins.readFile (
+      config = lib.concatMapStringsSep "\n\n" builtins.readFile (
         lib.pipe (lib.filesystem.listFilesRecursive ./.) [
           (lib.filter (n: n != ./default.nix))
         ]

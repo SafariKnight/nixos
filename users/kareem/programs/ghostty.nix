@@ -4,7 +4,7 @@
     settings = {
       # General Window & Behavior
       background-opacity = 1;
-      window-decoration = false;
+      window-decoration = true;
       command = "fish";
       gtk-single-instance = true;
       gtk-tabs-location = "bottom";

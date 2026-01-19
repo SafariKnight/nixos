@@ -13,6 +13,7 @@
       border_fg = "0x00FF00FF";
       error_bg = "0x20000000";
       error_fg = "0x01FF0000";
+      session_log = "null";
     };
   };
 }

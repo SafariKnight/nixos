@@ -18,6 +18,7 @@
   environment.systemPackages = with pkgs; [
     git
     wget
+    ddcutil
   ];
 
   boot.initrd.availableKernelModules = [
@@ -27,4 +28,9 @@
     "usbhid"
     "sd_mod"
   ];
+
+  hardware.i2c.enable = true;
+
+  services.desktopManager.plasma6.enable = true;
+  services.power-profiles-daemon.enable = false;
 }
