@@ -26,6 +26,7 @@
         "nix-command"
         "flakes"
       ];
+      max-substitution-jobs = 128;
       trusted-users = ["@wheel"];
       warn-dirty = false;
     };
