@@ -1,0 +1,9 @@
+[
+  {
+    "label": "switch",
+    "command": "just",
+    "args": ["switch"],
+    "use_new_terminal": false,
+    "hide": "on_success"
+  }
+]
