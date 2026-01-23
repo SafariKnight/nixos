@@ -3,144 +3,158 @@
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
-      # List by default
+      # --- System, Core Utilities & Filesystem ---
+      stdenv.cc.cc
+      coreutils
+      util-linux
+      systemd
       zlib
       zstd
-      stdenv.cc.cc
-      curl
-      openssl
-      attr
-      libssh
-      bzip2
-      libxml2
-      acl
-      libsodium
-      util-linux
       xz
-      systemd
-
-      # My own additions
-      xorg.libXcomposite
-      xorg.libXtst
-      xorg.libXrandr
-      xorg.libXext
-      xorg.libX11
-      xorg.libXfixes
-      libGL
-      libva
-      pipewire
-      xorg.libxcb
-      xorg.libXdamage
-      xorg.libxshmfence
-      xorg.libXxf86vm
+      bzip2
+      acl
+      attr
+      fuse
+      fuse3
+      e2fsprogs
+      libxml2
       libelf
-
-      # Required
-      glib
-      gtk2
-
-      # Inspired by steam
-      # https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/st/steam/package.nix#L36-L85
-      networkmanager
-      vulkan-loader
-      libgbm
-      libdrm
+      libuuid
+      libsodium
       libxcrypt
-      coreutils
-      pciutils
-      zenity
-      # glibc_multi.bin # Seems to cause issue in ARM
-
-      # # Without these it silently fails
-      xorg.libXinerama
-      xorg.libXcursor
-      xorg.libXrender
-      xorg.libXScrnSaver
-      xorg.libXi
-      xorg.libSM
-      xorg.libICE
-      gnome2.GConf
-      nspr
-      nss
-      cups
-      libcap
-      SDL2
-      libusb1
-      dbus-glib
-      ffmpeg
-      # Only libraries are needed from those two
-      libudev0-shim
-
-      # needed to run unity
-      gtk3
+      libxcrypt-legacy
+      keyutils
       icu
+      gmp
+
+      # --- Desktop, GTK & GUI Support ---
+      gtk2
+      gtk3
+      glib
+      dbus
+      dbus-glib
+      gdk-pixbuf
+      cairo
+      pango
+      harfbuzz
+      atk
+      at-spi2-atk
+      at-spi2-core
       libnotify
-      gsettings-desktop-schemas
-      # https://github.com/NixOS/nixpkgs/issues/72282
-      # https://github.com/NixOS/nixpkgs/blob/2e87260fafdd3d18aa1719246fd704b35e55b0f2/pkgs/applications/misc/joplin-desktop/default.nix#L16
-      # log in /home/leo/.config/unity3d/Editor.log
-      # it will segfault when opening files if you don’t do:
-      # export XDG_DATA_DIRS=/nix/store/0nfsywbk0qml4faa7sk3sdfmbd85b7ra-gsettings-desktop-schemas-43.0/share/gsettings-schemas/gsettings-desktop-schemas-43.0:/nix/store/rkscn1raa3x850zq7jp9q3j5ghcf6zi2-gtk+3-3.24.35/share/gsettings-schemas/gtk+3-3.24.35/:$XDG_DATA_DIRS
-      # other issue: (Unity:377230): GLib-GIO-CRITICAL **: 21:09:04.706: g_dbus_proxy_call_sync_internal: assertion 'G_IS_DBUS_PROXY (proxy)' failed
-
-      # Verified games requirements
-      xorg.libXt
-      xorg.libXmu
-      libogg
-      libvorbis
-      SDL
-      SDL2_image
-      glew110
-      libidn
-      tbb
-
-      # Other things from runtime
-      flac
-      freeglut
-      libjpeg
-      libpng
-      libpng12
-      libsamplerate
-      libmikmod
-      libtheora
-      libtiff
-      pixman
-      speex
-      SDL_image
-      SDL_ttf
-      SDL_mixer
-      SDL2_ttf
-      SDL2_mixer
+      zenity
       libappindicator-gtk2
+      libappindicator-gtk3
+      libdbusmenu
       libdbusmenu-gtk2
       libindicator-gtk2
-      libcaca
-      libcanberra
-      libgcrypt
-      libvpx
-      librsvg
+      desktop-file-utils
+      gsettings-desktop-schemas
+      libsecret
+
+      # --- X11 & Wayland ---
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXcursor
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
       xorg.libXft
+      xorg.libXi
+      xorg.libXinerama
+      xorg.libXmu
+      xorg.libXrandr
+      xorg.libXrender
+      xorg.libXScrnSaver
+      xorg.libXt
+      xorg.libXtst
+      xorg.libXxf86vm
+      xorg.libxcb
+      xorg.libxshmfence
+      xorg.libpciaccess
+      xorg.xcbutil
+      xorg.xcbutilimage
+      xorg.xcbutilkeysyms
+      xorg.xcbutilrenderutil
+      xorg.xcbutilwm
+      xorg.xkeyboardconfig
+      libxkbcommon
+      wayland
+
+      # --- Graphics & Rendering ---
+      mesa
+      libGL
+      libGLU
+      libglvnd
+      libgbm
+      libdrm
+      libva
       libvdpau
-      # ...
-      # Some more libraries that I needed to run programs
-      pango
-      cairo
-      atk
-      gdk-pixbuf
+      vulkan-loader
+      freeglut
+      glew110
+      libcaca
+
+      # --- Audio & Multimedia ---
+      pipewire
+      libpulseaudio
+      libjack2
+      alsa-lib
+      ffmpeg
+      gst_all_1.gstreamer
+      gst_all_1.gst-plugins-base
+      gst_all_1.gst-plugins-ugly
+      libmikmod
+      libogg
+      libvorbis
+      libtheora
+      libvpx
+      flac
+      speex
+      libsamplerate
+      libcanberra
+
+      # --- Images & Fonts ---
+      libpng
+      libpng12
+      libjpeg
+      libtiff
       fontconfig
       freetype
-      dbus
-      alsa-lib
-      expat
-      # for blender
-      libxkbcommon
+      fribidi
+      librsvg
+      libthai
+      pixman
+      tbb
 
-      libxcrypt-legacy # For natron
-      libGLU # For natron
+      # --- SDL & Gaming ---
+      SDL
+      SDL2
+      SDL2_image
+      SDL2_mixer
+      SDL2_ttf
+      SDL_image
+      SDL_mixer
+      SDL_ttf
+      libudev0-shim
 
-      # Appimages need fuse, e.g. https://musescore.org/fr/download/musescore-x86_64.AppImage
-      fuse
-      e2fsprogs
+      # --- Network, Security & Hardware ---
+      curl
+      openssl
+      nspr
+      nss
+      libssh
+      libidn
+      libcap
+      libgcrypt
+      libgpg-error
+      libusb1
+      pciutils
+      networkmanager
+      cups
+
+      # --- Development & Languages ---
+      python3
+      libclang.lib
     ];
   };
 }

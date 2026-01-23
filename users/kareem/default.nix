@@ -23,6 +23,8 @@
 
   hjem.users.kareem = {
     packages = with pkgs; [
+      bruno
+      jetbrains-toolbox
       qbittorrent
       p7zip-rar
       ouch
