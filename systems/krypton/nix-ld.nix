@@ -26,6 +26,7 @@
       keyutils
       icu
       gmp
+      expat
 
       # --- Desktop, GTK & GUI Support ---
       gtk2
