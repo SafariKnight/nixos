@@ -1,69 +1,21 @@
 {
-  outputs = {flake-parts, ...} @ inputs:
+  outputs = {
+    flake-parts,
+    nixpkgs,
+    ...
+  } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = inputs.nixpkgs.lib.systems.flakeExposed;
-      imports = [
-        ./pkgs
-        ./systems
-        ./users
-        inputs.treefmt-nix.flakeModule
+      imports = nixpkgs.lib.lists.flatten [
+        inputs.flake-parts.flakeModules.flakeModules
         inputs.flake-parts.flakeModules.modules
+        (inputs.import-tree ./modules)
       ];
-      perSystem = {
-        pkgs,
-        self',
-        ...
-      }: {
-        devShells = {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
-              npins
-              self'.packages.knv.devMode
-
-              just
-              fyi
-            ];
-          };
-        };
-        treefmt = {
-          projectRootFile = "flake.nix";
-          programs = {
-            alejandra.enable = true;
-            statix.enable = true;
-            deadnix.enable = true;
-            kdlfmt.enable = true;
-            fish_indent.enable = true;
-            shfmt.enable = true;
-            stylua = {
-              enable = true;
-              settings = {
-                column_width = 80;
-                line_endings = "Unix";
-                indent_type = "Spaces";
-                indent_width = 2;
-                quote_style = "AutoPreferDouble";
-                call_parentheses = "NoSingleTable";
-              };
-            };
-            prettier = {
-              enable = true;
-              settings = {
-                printWidth = 80;
-                useTabs = false;
-              };
-            };
-            taplo.enable = true;
-            yamlfmt.enable = true;
-          };
-          settings.global.excludes = [".direnv" ".git" ".jj"];
-        };
-      };
     };
 
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
-    # Alphabetically sorted
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -85,6 +37,8 @@
     };
 
     impurity.url = "github:outfoxxed/impurity.nix";
+
+    import-tree.url = "github:vic/import-tree";
 
     mnw.url = "github:Gerg-L/mnw";
 
