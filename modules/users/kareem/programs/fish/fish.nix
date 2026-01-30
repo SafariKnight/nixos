@@ -18,7 +18,7 @@
         enable = true;
         config = builtins.readFile ./config.fish;
         earlyConfigFiles = lib.pipe (lib.filesystem.listFilesRecursive ./conf.d) [
-          (lib.map builtins.baseNameOf)
+          (lib.map baseNameOf)
           (lib.map (lib.removeSuffix ".fish"))
           (lib.map (n: lib.nameValuePair n (builtins.readFile ./conf.d/${n}.fish)))
           builtins.listToAttrs
@@ -33,6 +33,8 @@
         };
         aliases = {
           nrepl = "nix repl -f flake:nixpkgs --extra-experimental-features pipe-operators";
+          tempdir = "set -g T $(mktemp -d)";
+          tempdircd = "set -g T $(mktemp -d); cd $T";
         };
         functions = {
           fish_command_not_found = ''
