@@ -1,6 +1,7 @@
 # AGENTS.md
 
 ## Commands
+
 - `just switch` - Rebuild and switch NixOS configuration (uses `nh os switch`)
 - `just test` - Test configuration without switching
 - `just update` - Update flake inputs and rebuild
@@ -8,7 +9,9 @@
 - `nix flake check` - Validate flake outputs
 
 ## Architecture (Dendritic Pattern)
+
 This config uses the **dendritic pattern**: every `.nix` file is a flake-parts module auto-imported via `import-tree`.
+
 - `modules/hosts/<host>/` - Host configs defining `configurations.nixos.<host>` with `deferredModule`
 - `modules/users/<user>/` - User configs defining `configurations.hjem.<user>` (hjem = home-manager alternative)
 - `modules/nixos/` - Shared NixOS modules exposed as `flake.modules.nixos.<name>`
@@ -19,6 +22,7 @@ This config uses the **dendritic pattern**: every `.nix` file is a flake-parts m
 **User management**: `configurations.hjem.<name>` auto-generates `flake.modules.nixos."user/<name>"`. Hosts import users via `config.flake.modules.nixos."user/<username>"` (see hosts/krypton/default.nix).
 
 ## Code Style
+
 - **Formatter**: alejandra (Nix), statix/deadnix (linting), shfmt (shell), stylua (lua)
 - **Module pattern**: Every file returns `{ ... }: { ... }` - a flake-parts module
 - **Host config**: Set `configurations.nixos.<name> = { pkgs, ... }: { ... };` using deferredModule
@@ -28,6 +32,7 @@ This config uses the **dendritic pattern**: every `.nix` file is a flake-parts m
 - **Naming**: kebab-case for files; use `lib.mkDefault` for overridable defaults
 
 ## Key Patterns
+
 - **hjem-ext extensions**: Each file sets `flake.modules.hjem.ext = { ... }: { options.ext.programs.<name> = ...; }` directly; deferredModule merges them automatically
 - **hjem-rum**: Pre-built hjem modules for common programs (ghostty, gtk, fish, etc.) accessed via `rum.programs.<name>`
 - **Custom packages**: `modules/pkgs/_packages/` uses `packagesFromDirectoryRecursive`; each subfolder has `package.nix`
