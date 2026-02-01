@@ -37,15 +37,15 @@ _format:
   nix fmt &>/dev/null
 
 _switch flake: _format
-  nh os switch $(pwd) -H {{flake}}
+  nh os switch $(pwd) -H {{flake}} --accept-flake-config
 
 _test flake: _format
-  nh os test $(pwd) -H {{flake}}
+  nh os test $(pwd) -H {{flake}} --accept-flake-config
 
 _update flake: _format
   nix flake update
   sudo nixos-rebuild switch --flake .#{{flake}}
-  nh os switch $(pwd) -H {{flake}} -u
+  nh os switch $(pwd) -H {{flake}} -u --accept-flake-config
 
 _repl flake:
   nixos-rebuild repl --flake .#{{flake}}
