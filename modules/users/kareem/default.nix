@@ -1,4 +1,8 @@
-{self, ...}: {
+{
+  self,
+  inputs,
+  ...
+}: {
   configurations.hjem.kareem = {pkgs, ...}: {
     time.timeZone = "Africa/Cairo";
     i18n.defaultLocale = "en_US.UTF-8";
@@ -28,7 +32,7 @@
         typst
         usbutils
         flatpak-xdg-utils
-        amp-cli
+        inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.amp
         (discord.override {
           withOpenASAR = true;
           withVencord = true;
