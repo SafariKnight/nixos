@@ -13,6 +13,17 @@
       ];
     };
 
+  nixConfig = {
+    extra-substituters = [
+      "https://cache.numtide.com"
+      "https://vicinae.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+      "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
@@ -36,9 +47,11 @@
       };
     };
 
+    import-tree.url = "github:vic/import-tree";
+
     impurity.url = "github:outfoxxed/impurity.nix";
 
-    import-tree.url = "github:vic/import-tree";
+    llm-agents.url = "github:numtide/llm-agents.nix";
 
     mnw.url = "github:Gerg-L/mnw";
 
