@@ -29,7 +29,8 @@
           "nix-command"
           "flakes"
         ];
-        max-substitution-jobs = 128;
+        max-substitution-jobs = 32;
+        http-connections = 32;
         trusted-users = ["@wheel"];
         warn-dirty = false;
       };
