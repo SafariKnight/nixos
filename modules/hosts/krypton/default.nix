@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   ...
 }: {
   configurations.nixos.krypton = {pkgs, ...}: {
