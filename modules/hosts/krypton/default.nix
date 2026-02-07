@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  inputs,
+  ...
+}: {
   configurations.nixos.krypton = {pkgs, ...}: {
     imports = [
       config.flake.modules.nixos."user/kareem"
@@ -17,7 +21,10 @@
       git
       wget
       ddcutil
+      piper
     ];
+
+    virtualisation.waydroid.enable = true;
 
     boot.initrd.availableKernelModules = [
       "xhci_pci"
@@ -29,7 +36,13 @@
 
     hardware.i2c.enable = true;
 
+    services.ratbagd.enable = true;
+
     services.power-profiles-daemon.enable = false;
+    services.displayManager.dms-greeter = {
+      enable = true;
+      compositor.name = "niri";
+    };
   };
 
   configurations.nixos.krypton-impure.module = {
