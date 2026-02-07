@@ -11,7 +11,7 @@
           shell-integration-features = "no-cursor,sudo,title";
           cursor-style-blink = false;
 
-          font-family = "Lilex";
+          font-family = "Maple Mono NF";
           font-style = "Medium";
           font-style-bold = "Bold";
           font-style-italic = "Medium Italic";
